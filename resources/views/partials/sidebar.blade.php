@@ -4,7 +4,7 @@
       <!-- Nav items -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+        <a class="nav-link {{ $activePage == 'dashboard' ? 'active' : '' }}" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
             <i class="ni ni-shop text-primary"></i>
             <span class="nav-link-text">Dasbor</span>
           </a>
@@ -16,14 +16,14 @@
           </a>
           <div class="collapse" id="navbar-examples">
             <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a href="../../pages/examples/login.html" class="nav-link">
+              <li class="nav-item {{ $activePage == 'makan' ? 'active' : '' }}">
+                <a href="{{ route('makanan') }}" class="nav-link">
                   <span class="sidenav-mini-icon"> M </span>
                   <span class="sidenav-normal"> Makanan </span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../pages/examples/register.html" class="nav-link">
+              <li class="nav-item {{ $activePage == 'cariMakanan' ? 'active' : '' }}">
+                <a href="{{ route('cari.makanan') }}" class="nav-link">
                   <span class="sidenav-mini-icon"> CR </span>
                   <span class="sidenav-normal"> Cari Makanan </span>
                 </a>
