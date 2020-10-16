@@ -43,7 +43,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="ni ni-ui-04"></i>
+            <i class="far fa-file-alt"></i>
             <span class="nav-link-text">Kebijakan Privasi</span>
           </a>
         </li>

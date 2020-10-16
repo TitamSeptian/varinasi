@@ -50,7 +50,7 @@
                     </ul>
                 </div>
                 <div class="d-none d-lg-block d-lg-none">
-                    <a href="#login" class="btn btn-md btn-docs btn-outline-white animate-up-2 mr-3">Login</a>
+                <a href="{{ route('login') }}" target="_blank" class="btn btn-md btn-docs btn-outline-white animate-up-2 mr-3">Login</a>
                 </div>
                 <div class="d-flex d-lg-none align-items-center">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
