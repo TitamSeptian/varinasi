@@ -18,6 +18,6 @@ class Food extends Model
 
     public function calorieUse()
     {
-        return $this->hasMany(CalorieUse::class)
+        return $this->hasMany(CalorieUse::class);
     }
 }
