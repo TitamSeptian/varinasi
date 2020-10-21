@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Varinasi - Login</title>
+    <title>Varinasi - Register</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -71,9 +71,38 @@
                                 <small>Masuk</small>
                             </div>
                             @include('partials.msg')
-                            <form method="POST" action="{{ route('post.login') }}">
+                            <form method="POST" action="{{ route('post.register') }}">
                                 @csrf
                                 @method('POST')
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <input class="form-control" placeholder="Nama" type="text" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <input class="form-control" placeholder="Berat Badan(kg)" type="number" name="weight" min="1" required>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <input class="form-control" placeholder="Tinggi Badan(cm)" type="number" name="height" min="1" required>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <input class="form-control" placeholder="Umur(tahun)" type="number" name="age" min="1" required>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <select class="form-control" name="gender">
+                                            <option disabled>Jenis Kelamin</option>
+                                            <option value="L">Laki - laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <input class="form-control" placeholder="Nama Pengguna" type="text" name="username" required>
@@ -82,6 +111,11 @@
                                 <div class="form-group">
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <input class="form-control" placeholder="Kata Sandi" type="password" name="password" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <input class="form-control" placeholder="Konfirmasi Kata Sandi" type="password" name="password_confirmation" required>
                                     </div>
                                 </div>
                                 <div class="text-center">

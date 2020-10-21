@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('height');
             $table->integer('weight');
             $table->integer('age');
+            $table->enum('gender', ['L', 'W']);
             $table->enum('level', ['USER', 'ADMIN'])->default('USER');
             // $table->rememberToken();
             $table->timestamps();
