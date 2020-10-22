@@ -16,8 +16,8 @@ class Ingredient extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function food()
+    public function foodDetail()
     {
-        return $this->hasMany(Food::class);
+        return $this->hasMany(foodDetail::class);
     }
 }

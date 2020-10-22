@@ -135,7 +135,7 @@ class IngredientController extends Controller
     {
         $a = \App\Food::where('ingredient_id', $id)->get();
         if (count($a) > 0) {
-            return response()->json(['msg' => 'Tipe bahan ini terdapat di salah satu makanan'], 401);
+            return response()->json(['msg' => 'Bahan ini terdapat di salah satu makanan'], 401);
         }
         $data = Ingredient::findOrFail($id);
         $data->delete();
