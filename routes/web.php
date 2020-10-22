@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
 	Route::resource('/tipe', "TypeController");
 	Route::get('/data/t', "TypeController@datatables")->name('tipe.data');
 
+	Route::resource('/bahan', "IngredientController");
+	Route::get('/data/b', "IngredientController@datatables")->name('bahan.data');
+
 	Route::get('/makanan', function (){
 	    return view('pages.makan');
 	})->name('makanan');

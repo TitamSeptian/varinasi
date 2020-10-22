@@ -13,7 +13,7 @@ $('body').on('click', '#btn-create', function (e) {
 		dataType: 'html',
 		success: (res) => {
 			$('#modal-body').html(res)
-			$('#modal-title').html("Tambah Tipe")
+			$('#modal-title').html("Tambah Bahan")
 			$('#modal').modal('show');		
 		}
 	})
@@ -31,7 +31,7 @@ $('body').on('submit', '#form-store', function (e) {
 		type: 'POST',
 		data: data,
 		success: res => {
-			$('#tableType').DataTable().ajax.reload();
+			$('#tableBahan').DataTable().ajax.reload();
 			Swal.fire({
 				title:'Sukses !',
 				type:'success',
@@ -90,7 +90,7 @@ $('body').on('submit', '#form-edit', function (e) {
 		type: 'POST',
 		data: data,
 		success: res => {
-			$('#tableType').DataTable().ajax.reload();
+			$('#tableBahan').DataTable().ajax.reload();
 			Swal.fire({
 				title:'Sukses !',
 				type:'success',
@@ -181,7 +181,7 @@ $('body').on('click', '.btn-delete', function (e) {
 						timer: 1800
 					});
 
-					$('#tableType').DataTable().ajax.reload();
+					$('#tableBahan').DataTable().ajax.reload();
 				},
 
 				error: function(xhr){
@@ -199,6 +199,9 @@ $('body').on('click', '.btn-delete', function (e) {
 });
 
 
+
+
+
 $('body').on('click', '.btn-refresh', function (e) {
-	$('#tableType').DataTable().ajax.reload();
+	$('#tableBahan').DataTable().ajax.reload();
 });

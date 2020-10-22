@@ -17,6 +17,14 @@
                     <span class="nav-link-text">Tipe</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ $activePage == 'bahan' ? 'active' : '' }}" href="{{ route('bahan.index') }}">
+                    <i class="fas fa-book"></i>
+                    <span class="nav-link-text">Bahan</span>
+                </a>
+            </li>
+            
             @endif
 
             <li class="nav-item">

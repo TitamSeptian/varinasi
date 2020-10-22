@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Type;
 use DataTables;
 use Validator;
+use App\Ingredient;
+use App\Type;
 
-class TypeController extends Controller
+class IngredientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return view('pages.type.index');
+        return view("pages.ing.index");
     }
 
     /**
@@ -26,7 +27,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('pages.type.create');
+        $data = Type::all();
+        return view("pages.ing.create", compact('data'));
     }
 
     /**
@@ -38,18 +40,25 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'name.required' => 'Nama Harus di isi',
+            'name.required' => 'Nama Harus diisi',
             'name.min' => 'Nama Minimal 2 karakter',
+            'type.required' => 'Tipe Bahan Haris diisi',
+            'calorie.required' => 'Kalori harus diisi',
+            'calorie.numeric' => 'Hanya diisi Angka',
         ];
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:2',
+            'type' => 'required',
+            'calorie' => 'required|numeric',
         ], $messages);
         if ($validator->fails()) {
             return response()->json(["errors" => $validator->errors()], 422);
         }
 
-        $data = Type::create([
+        $data = Ingredient::create([
             'name' => $request->name,
+            'calorie' => $request->calorie,
+            'type_id' => $request->type,
         ]);
         return response()->json(['msg' => "$data->name Berhasil Ditambahkan"], 200);
     }
@@ -73,8 +82,12 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        $data = Type::findOrFail($id);
-        return view('pages.type.edit', compact('data'));
+        $tipe = Type::all();
+        $data = Ingredient::findOrFail($id);
+        return view("pages.ing.edit", [
+            'tipe' => $tipe,
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -87,20 +100,27 @@ class TypeController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            'name.required' => 'Nama Harus di isi',
+            'name.required' => 'Nama Harus diisi',
             'name.min' => 'Nama Minimal 2 karakter',
+            'type.required' => 'Tipe Bahan Haris diisi',
+            'calorie.required' => 'Kalori harus diisi',
+            'calorie.numeric' => 'Hanya diisi Angka',
         ];
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:2',
+            'type' => 'required',
+            'calorie' => 'required|numeric',
         ], $messages);
         if ($validator->fails()) {
             return response()->json(["errors" => $validator->errors()], 422);
         }
 
-        $data = Type::findOrFail($id);
+        $data = Ingredient::findOrFail($id);
 
         $data->update([
             'name' => $request->name,
+            'calorie' => $request->calorie,
+            'type_id' => $request->type,
         ]);
         return response()->json(['msg' => "$data->name Berhasil Diedit"], 200);
     }
@@ -113,11 +133,11 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        $a = \App\Ingredient::where('type_id', $id)->get();
+        $a = \App\Food::where('ingredient_id', $id)->get();
         if (count($a) > 0) {
-            return response()->json(['msg' => 'Tipe bahan ini terdapat di salah satu bahan'], 401);
+            return response()->json(['msg' => 'Tipe bahan ini terdapat di salah satu makanan'], 401);
         }
-        $data = Type::findOrFail($id);
+        $data = Ingredient::findOrFail($id);
         $data->delete();
 
         return response()->json(['msg' => "$data->name Berhasil dihapus"],200);
@@ -125,14 +145,14 @@ class TypeController extends Controller
 
     public function datatables()
     {
-        $tipe = Type::query()->orderBy('created_at', 'DESC');
+        $bahan = Ingredient::query()->orderBy('created_at', 'DESC')->with('type');
 
-        return DataTables::of($tipe)
-            ->addColumn('action', function($tipe){
-                return view('pages.type.action', [
-                    'model' => $tipe,
-                    'url_edit' => route('tipe.edit', $tipe->id),
-                    'url_delete' => route('tipe.destroy', $tipe->id),
+        return DataTables::of($bahan)
+            ->addColumn('action', function($bahan){
+                return view('pages.ing.action', [
+                    'model' => $bahan,
+                    'url_edit' => route('bahan.edit', $bahan->id),
+                    'url_delete' => route('bahan.destroy', $bahan->id),
                 ]);
             })->rawColumns(['action'])->addIndexColumn()->make(true);
     }
