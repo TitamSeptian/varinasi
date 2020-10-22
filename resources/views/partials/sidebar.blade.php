@@ -4,11 +4,21 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ $activePage == 'dashboard' ? 'active' : '' }}" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+                <a class="nav-link {{ $activePage == 'dashboard' ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <i class="ni ni-shop text-primary"></i>
                     <span class="nav-link-text">Dasbor</span>
                 </a>
             </li>
+            @if(Auth::user()->level == "ADMIN")
+
+            <li class="nav-item">
+                <a class="nav-link {{ $activePage == 'tipe' ? 'active' : '' }}" href="{{ route('tipe.index') }}">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span class="nav-link-text">Tipe</span>
+                </a>
+            </li>
+            @endif
+
             <li class="nav-item">
                 <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
                     <i class="fas fa-pizza-slice text-orange"></i>

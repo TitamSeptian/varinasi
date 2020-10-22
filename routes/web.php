@@ -27,8 +27,10 @@ Route::get('logout', function ()
 
 Route::middleware('auth')->group(function () {
 	Route::get('/dashboard', "UniversalController@dashboard")->name('dashboard');
-
 	Route::put('/{id}/update', "UniversalController@updateProfile")->name('update.profile');
+
+	Route::resource('/tipe', "TypeController");
+	Route::get('/data/t', "TypeController@datatables")->name('tipe.data');
 
 	Route::get('/makanan', function (){
 	    return view('pages.makan');
