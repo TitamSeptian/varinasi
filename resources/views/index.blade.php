@@ -149,11 +149,11 @@
                     <div class="col-6 col-sm-3 col-lg-2 mb-4 mb-lg-0">
                         <h6>4 MSTR</h6>
                         <ul class="links-vertical">
-                            <li><a target="_blank" href="https://www.instagram.com/">Ardian Hafizqn</a></li>
-                            <li><a target="_blank" href="https://www.instagram.com/">Muhamad Ilham Nuari</a></li>
-                            <li><a target="_blank" href="https://www.instagram.com/">Rizky Sanjaya Tandia</a></li>
+                            <li><a target="_blank" href="https://www.instagram.com/not_ardian_hilman">Ardian Hafizqn</a></li>
+                            <li><a target="_blank" href="https://www.instagram.com/ilhmnuari">Muhamad Ilham Nuari</a></li>
+                            <li><a target="_blank" href="https://www.instagram.com/rzkysanjaya.t">Rizky Sanjaya Tandia</a></li>
                             <li><a target="_blank" href="https://www.instagram.com/titam9889">Septian Dwi Putra</a></li>
-                            <li><a target="_blank" href="https://www.instagram.com/">Suci Sukmawati</a></li>
+                            <li><a target="_blank" href="https://www.instagram.com/sucisukmawati_">Suci Sukmawati</a></li>
                         </ul>
                     </div>
                 </div>

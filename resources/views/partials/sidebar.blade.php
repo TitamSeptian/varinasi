@@ -60,14 +60,14 @@
             <h6 class="navbar-heading pl-4 text-muted">
                 <span class="docs-normal">Lainya</span>
             </h6>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item {{ $activePage == 'tentang' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('aboutUs') }}">
                     <i class="ni ni-spaceship"></i>
                     <span class="nav-link-text">Tentang Kami</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item {{ $activePage == 'privasi' ? 'active' : '' }}"">
+                <a class="nav-link" href="{{ route('privacy') }}">
                     <i class="far fa-file-alt"></i>
                     <span class="nav-link-text">Kebijakan Privasi</span>
                 </a>

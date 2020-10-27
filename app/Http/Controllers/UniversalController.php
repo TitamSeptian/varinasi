@@ -39,4 +39,14 @@ class UniversalController extends Controller
     	return redirect()->back()->with('msgSuccess', 'Berhasil diubah');
 
     }
+
+    public function aboutUs()
+    {
+        return view("pages.about");
+    }
+
+    public function privacy()
+    {
+        return view("pages.privacy-policy");
+    }
 }

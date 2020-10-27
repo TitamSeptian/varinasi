@@ -131,7 +131,11 @@ Untuk wanita: (447,6 + 9,25 x berat dalam kilogram) + (3,10 x tinggi dalam senti
                                                     ->where("date", \Date::now()->format("Y-m-d"))
                                                     ->select(\DB::raw("SUM(qty*calorie) as total_calorie"), "user_id")
                                                     ->first();
-                                                echo $a->total_calorie;
+                                                if ($a == null) {
+                                                    echo "0";
+                                                }else{
+                                                    echo $a->total_calorie;
+                                                }
                                             @endphp
                                              kkal
                                         </span>

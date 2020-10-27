@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
 
 
 	Route::get('/list-makanan/', "FoodController@allMakanan")->name('makanan');
+	Route::get('/tentang-kami', "UniversalController@aboutUs")->name("aboutUs");	
+	Route::get('/kebijakan-privasi', "UniversalController@privacy")->name("privacy");	
 
 	Route::get('/cari-makanan', function (){
 	    return view('pages.cari-makanan');
