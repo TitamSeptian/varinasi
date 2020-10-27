@@ -34,8 +34,14 @@ Route::middleware('auth')->group(function () {
 
 	Route::resource('/bahan', "IngredientController");
 	Route::get('/data/b', "IngredientController@datatables")->name('bahan.data');
+	Route::get('/sel2/b', "IngredientController@findIngredient")->name('bahan.sel2');
 
-	Route::get('/makanan', function (){
+	Route::resource('/makanan', "FoodController");
+	Route::get('/data/m', "FoodController@datatables")->name('makanan.data');
+
+
+
+	Route::get('/makanan/o', function (){
 	    return view('pages.makan');
 	})->name('makanan');
 

@@ -24,6 +24,13 @@
                     <span class="nav-link-text">Bahan</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ $activePage == 'makanan' ? 'active' : '' }}" href="{{ route('makanan.index') }}">
+                    <i class="fas fa-fish"></i> 
+                    <span class="nav-link-text">Makanan</span>
+                </a>
+            </li>
             
             @endif
 

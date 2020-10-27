@@ -7,6 +7,7 @@ use DataTables;
 use Validator;
 use App\Ingredient;
 use App\Type;
+use DB;
 
 class IngredientController extends Controller
 {
@@ -148,6 +149,7 @@ class IngredientController extends Controller
         $bahan = Ingredient::query()->orderBy('created_at', 'DESC')->with('type');
 
         return DataTables::of($bahan)
+            
             ->addColumn('action', function($bahan){
                 return view('pages.ing.action', [
                     'model' => $bahan,
@@ -155,5 +157,11 @@ class IngredientController extends Controller
                     'url_delete' => route('bahan.destroy', $bahan->id),
                 ]);
             })->rawColumns(['action'])->addIndexColumn()->make(true);
+    }
+
+    public function findIngredient()
+    {
+        $data = Ingredient::where('name', 'LIKE', "%". request('q'). "%")->get();
+        return response()->json(["items" => $data], 200);
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Food extends Model
 {
     protected $guarded = ['id'];
-    protected $hidden = ['password'];
     protected $table = 'foods';
     protected $primaryKey = 'id';
 
@@ -23,6 +22,6 @@ class Food extends Model
 
     public function foodDetail()
     {
-        return $this->hasMany(foodDetail::class);
+        return $this->hasMany(FoodDetail::class);
     }
 }

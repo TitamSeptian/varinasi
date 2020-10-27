@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CalorieUse extends Model
 {
     protected $guarded = ['id'];
-    protected $hidden = ['password'];
-    protected $table = 'types';
+    protected $table = 'calorie_uses';
     protected $primaryKey = 'id';
 
     public function user()

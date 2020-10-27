@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     protected $guarded = ['id'];
-    protected $hidden = ['password'];
     protected $table = 'types';
     protected $primaryKey = 'id';
 
