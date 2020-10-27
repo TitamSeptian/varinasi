@@ -124,7 +124,17 @@ Untuk wanita: (447,6 + 9,25 x berat dalam kilogram) + (3,10 x tinggi dalam senti
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0 text-white">Kalori Terpenuhi</h5>
-                                        <span class="h2 font-weight-bold mb-0 text-white">49,65 Kkal</span>
+                                        <span class="h2 font-weight-bold mb-0 text-white">
+                                            @php
+                                                $a = \App\CalorieUse::groupBy('user_id', 'date')
+                                                    ->where("user_id", \Auth::id())
+                                                    ->where("date", \Date::now()->format("Y-m-d"))
+                                                    ->select(\DB::raw("SUM(qty*calorie) as total_calorie"), "user_id")
+                                                    ->first();
+                                                echo $a->total_calorie;
+                                            @endphp
+                                             kkal
+                                        </span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-white text-dark rounded-circle shadow">

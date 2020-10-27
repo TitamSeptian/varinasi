@@ -38,15 +38,25 @@ Route::middleware('auth')->group(function () {
 
 	Route::resource('/makanan', "FoodController");
 	Route::get('/data/m', "FoodController@datatables")->name('makanan.data');
+	Route::get('/lihat-makanan/{id}', "FoodController@showFood")->name("makan.show");
+	Route::post('/eating/{id}', 'FoodController@eating')->name("makan.eat");
 
 
 
-	Route::get('/makanan/o', function (){
-	    return view('pages.makan');
-	})->name('makanan');
+	Route::get('/list-makanan/', "FoodController@allMakanan")->name('makanan');
 
 	Route::get('/cari-makanan', function (){
 	    return view('pages.cari-makanan');
 	})->name('cari.makanan');
+
+
+	Route::get("/aaa", function (){
+		$a = \App\CalorieUse::groupBy('user_id', 'date')
+			->where("user_id", \Auth::id())
+			->where("date", \Date::now()->format("Y-m-d"))
+			->select(\DB::raw("SUM(qty*calorie) as total_calorie"), "user_id")
+			->first();
+		dd($a);
+	});
 
 });

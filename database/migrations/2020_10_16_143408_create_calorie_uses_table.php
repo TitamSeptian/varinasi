@@ -17,8 +17,9 @@ class CreateCalorieUsesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('food_id');
-            $table->string('date');
-            $table->integer('calorie');
+            $table->date('date');
+            $table->integer('calorie')->nullable();
+            $table->integer("qty");
             $table->timestamps();
 
             $table->foreign('user_id')->on('users')->references('id')->onUpdate('cascade')->onDelete('cascade');

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
 use App\Food;
 use App\Ingredient;
 use App\FoodDetail;
+use App\CalorieUse;
+use Validator;
+use Auth;
+use Date;
 use DataTables;
 use DB;
 
@@ -124,7 +127,7 @@ class FoodController extends Controller
     public function destroy($id)
     {
         $data = Food::findOrFail($id);
-        $calorieUses = \App\CalorieUse::where('food_id', $id)->get();
+        $calorieUses = CalorieUse::where('food_id', $id)->get();
         if (count($calorieUses) > 0 ) {
             return response()->json(['msg', "$data->name sedang digunukan"],401);
         }
@@ -147,5 +150,50 @@ class FoodController extends Controller
                     'url_delete' => route('makanan.destroy', $food->id),
                 ]);
             })->rawColumns(['action'])->addIndexColumn()->make(true);
+    }
+
+    public function allMakanan()
+    {
+        $data = Food::paginate(2);
+        $ingredient = Ingredient::all();
+        return view("pages.makan", [
+            "data" => $data,
+            "ingredient" => $ingredient,
+        ]);
+    }
+
+    public function showFood($id)
+    {
+        $data = Food::findOrFail($id);
+        return view('pages.showFood ', compact('data'));
+    }
+
+    public function eating(Request $request, $id)
+    {
+
+        $messages = [
+            'qty.numeric' => 'Hanya diisi Angka',
+            'qty.required' => 'Qty harus diisi',
+            'qty.min' => 'Qty Minimal satu'
+        ];
+        $validator = Validator::make($request->all(), [
+            'qty' => 'required|numeric|min:1',
+        ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json(["errors" => $validator->errors()], 422);
+        }
+        // dd($request);
+        $food = Food::findOrFail($id);
+
+        $data = CalorieUse::create([
+            "food_id" => $id,
+            "user_id" => Auth::id(),
+            "calorie" => $food->calorie,
+            "date" => Date::now()->format("Y-m-d"),
+            "qty" => $request->qty,
+        ]);
+
+        return response()->json(["msg" => "Anda Memakan $food->name sebanyak $data->qty"]);
     }
 }
