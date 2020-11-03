@@ -154,7 +154,7 @@ class FoodController extends Controller
 
     public function allMakanan()
     {
-        $data = Food::paginate(2);
+        $data = Food::paginate(9);
         $ingredient = Ingredient::all();
         return view("pages.makan", [
             "data" => $data,
@@ -195,5 +195,29 @@ class FoodController extends Controller
         ]);
 
         return response()->json(["msg" => "Anda Memakan $food->name sebanyak $data->qty"]);
+    }
+
+    public function sudahMakan()
+    {
+        return view("pages.sudah-makan");
+    }
+
+    public function dataSudahMakan()
+    {
+        $food = CalorieUse::query()->orderBy('created_at', 'DESC')->where("user_id", Auth::id())->with(["food", "user"]);
+
+        return DataTables::of($food)
+            ->addColumn("tgl", function ($food){
+                return Date::parse($food->date)->format('d F Y');;
+            })
+            // ->addColumn('action', function($food){
+            //     return view('pages.food.action', [
+            //         'model' => $food,
+            //         'url_show' => route('makanan.show', $food->id),
+            //         'url_edit' => route('makanan.edit', $food->id),
+            //         'url_delete' => route('makanan.destroy', $food->id),
+            //     ]);
+            // })->rawColumns(['action'])
+            ->addIndexColumn()->make(true);
     }
 }

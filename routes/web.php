@@ -47,9 +47,8 @@ Route::middleware('auth')->group(function () {
 	Route::get('/tentang-kami', "UniversalController@aboutUs")->name("aboutUs");	
 	Route::get('/kebijakan-privasi', "UniversalController@privacy")->name("privacy");	
 
-	Route::get('/cari-makanan', function (){
-	    return view('pages.cari-makanan');
-	})->name('cari.makanan');
+	Route::get('/sudah-makanan', "FoodController@sudahMakan")->name('sudah.makan');
+	Route::get('/data/sm', "FoodController@dataSudahMakan")->name('data.sudah.makan');
 
 
 	Route::get("/aaa", function (){

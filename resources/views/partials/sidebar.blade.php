@@ -47,10 +47,10 @@
                                 <span class="sidenav-normal"> Makanan </span>
                             </a>
                         </li>
-                        <li class="nav-item {{ $activePage == 'cariMakanan' ? 'active' : '' }}">
-                            <a href="{{ route('cari.makanan') }}" class="nav-link">
+                        <li class="nav-item {{ $activePage == 'sudah' ? 'active' : '' }}">
+                            <a href="{{ route('sudah.makan') }}" class="nav-link">
                                 <span class="sidenav-mini-icon"> CR </span>
-                                <span class="sidenav-normal"> Cari Makanan </span>
+                                <span class="sidenav-normal"> Sudah Dimakan </span>
                             </a>
                         </li>
                     </ul>

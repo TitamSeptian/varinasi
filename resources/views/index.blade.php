@@ -71,9 +71,9 @@
                 <div class="row justify-content-center mb-5">
                     <div class="col-12 col-sm-8 col-md-7 col-lg-6 text-center">
                         <img src="{{ asset('/assets/img/brand/light.svg')}}" class="mb-4" height="65" alt="Logo Impact">
-                        <h1 class="display-4 text-muted mb-5 font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h1>
+                        <h1 class="display-4 text-muted mb-5 font-weight-normal">Rekomendasi selain nasi agar mengurangi konsumsi nasi dan berhenti menjadi orang yang belum makan nasi belum makan</h1>
                         <div class="d-flex align-items-center justify-content-center mb-5">
-                            <a href="#" target="_blank" class="btn btn-secondary mb-3 mt-2 mr-3 animate-up-2"><i class="fas fa-sign-in-alt"></i> Mulai</a>
+                            <a href="{{ route('login') }}" target="_blank" class="btn btn-secondary mb-3 mt-2 mr-3 animate-up-2"><i class="fas fa-sign-in-alt"></i> Mulai</a>
                         </div>
                     </div>
                 </div>

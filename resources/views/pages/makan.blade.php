@@ -12,8 +12,8 @@
         <div class="container-fluid d-flex align-items-center">
             <div class="row">
                 <div class="col-lg-7 col-md-10">
-                    <h1 class="display-2 text-white">Hai Snow</h1>
-                    <p class="text-white mt-0 mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem provident mollitia repellendus maiores sit omnis numquam in.</p>
+                    <h1 class="display-2 text-white">Hai {{ Auth::user()->name }}</h1>
+                    <p class="text-white mt-0 mb-5">Manusia tentu membutuhkan kalori agar tetap hidup. Tanpa energi, sel-sel dalam tubuh tidak akan mampu bekerja dengan baik hingga akhirnya organ-organ dalam tubuh, termasuk jantung dan otak, tidak bisa berfungsi sebagai mana mestinya</p>
                 </div>
             </div>
         </div>
