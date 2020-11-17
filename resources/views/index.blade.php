@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="pattern bottom" style="background-image: url(/assets/img/patterns/wave.svg);""></div>
+            <div class="pattern bottom" style="background-image: url(/assets/img/patterns/wave.svg);"></div>
         </section>
         <div class="section pt-0">
             <div class="container mt-n10 mt-lg-n12 z-2">
